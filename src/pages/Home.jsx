@@ -12,13 +12,16 @@ import {
     Users,
     Landmark,
     Clock,
-    Archive
+    Archive,
+    Menu,
+    X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const WenzhouHeritage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // Handle scroll effect for navbar
     useEffect(() => {
@@ -58,11 +61,34 @@ const WenzhouHeritage = () => {
                     </div>
                     <button
                         onClick={() => scrollToSection('contact')}
-                        className="px-5 py-2 bg-stone-900 text-stone-50 text-sm hover:bg-stone-800 transition-colors rounded-sm"
+                        className="hidden md:block px-5 py-2 bg-stone-900 text-stone-50 text-sm hover:bg-stone-800 transition-colors rounded-sm"
                     >
                         立即咨询
                     </button>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden text-stone-900"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
+
+                {/* Mobile Menu Overlay */}
+                {mobileMenuOpen && (
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-stone-200 shadow-lg py-4 px-6 flex flex-col space-y-4">
+                        <button onClick={() => { scrollToSection('whynow'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">缘起</button>
+                        <Link to="/leader-profile" className="text-left py-2 border-b border-stone-100 text-stone-600" onClick={() => setMobileMenuOpen(false)}>负责人</Link>
+                        <button onClick={() => { scrollToSection('deliverables'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">交付</button>
+                        <button onClick={() => { scrollToSection('case'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">案例</button>
+                        <button onClick={() => { scrollToSection('cooperation'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">合作</button>
+                        <button onClick={() => { scrollToSection('faq'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">常见问题</button>
+                        <button onClick={() => { scrollToSection('contact'); setMobileMenuOpen(false); }} className="text-left py-2 bg-stone-900 text-white text-center rounded-sm mt-2">
+                            立即咨询
+                        </button>
+                    </div>
+                )}
             </nav>
 
             {/* Hero Section */}
@@ -93,10 +119,10 @@ const WenzhouHeritage = () => {
                         </button>
                     </div>
                 </div>
-            </header>
+            </header >
 
             {/* Why Now */}
-            <section id="whynow" className="py-20 px-6 max-w-6xl mx-auto">
+            < section id="whynow" className="py-20 px-6 max-w-6xl mx-auto" >
                 <div className="grid md:grid-cols-3 gap-12">
                     <div className="space-y-4">
                         <div className="w-12 h-12 bg-stone-200 rounded-full flex items-center justify-center text-stone-700 mb-4">
@@ -126,10 +152,10 @@ const WenzhouHeritage = () => {
                         </p>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Philosophy Banner */}
-            <section className="py-16 bg-stone-900 text-stone-300 px-6">
+            < section className="py-16 bg-stone-900 text-stone-300 px-6" >
                 <div className="max-w-4xl mx-auto text-center space-y-6">
                     <h2 className="text-2xl md:text-3xl font-serif text-white">我们做的不是“写一本书”</h2>
                     <div className="w-20 h-px bg-stone-600 mx-auto"></div>
@@ -138,10 +164,10 @@ const WenzhouHeritage = () => {
                         像修一条可追溯的证据链，而不是写一篇好看的故事。
                     </p>
                 </div>
-            </section>
+            </section >
 
             {/* Deliverables */}
-            <section id="deliverables" className="py-24 px-6 bg-white">
+            < section id="deliverables" className="py-24 px-6 bg-white" >
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-serif font-bold mb-4">交付形态</h2>
@@ -181,10 +207,10 @@ const WenzhouHeritage = () => {
                         />
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Methodology */}
-            <section className="py-20 px-6 bg-stone-100">
+            < section className="py-20 px-6 bg-stone-100" >
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
@@ -227,10 +253,10 @@ const WenzhouHeritage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Case Study */}
-            <section id="case" className="py-24 px-6 bg-stone-800 text-stone-200">
+            < section id="case" className="py-24 px-6 bg-stone-800 text-stone-200" >
                 <div className="max-w-5xl mx-auto border border-stone-600 p-8 md:p-12 relative overflow-hidden">
                     {/* Decorative background number */}
                     <div className="absolute top-0 right-0 text-9xl font-bold text-stone-700 opacity-20 -mr-10 -mt-10 font-serif">
@@ -259,10 +285,10 @@ const WenzhouHeritage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Cooperation Models */}
-            <section id="cooperation" className="py-24 px-6 max-w-6xl mx-auto">
+            < section id="cooperation" className="py-24 px-6 max-w-6xl mx-auto" >
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-serif font-bold">合作方式</h2>
                     <div className="w-10 h-1 bg-stone-900 mx-auto mt-4"></div>
@@ -301,10 +327,10 @@ const WenzhouHeritage = () => {
                         </button>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Team */}
-            <section className="py-16 px-6 bg-stone-100 border-y border-stone-200">
+            < section className="py-16 px-6 bg-stone-100 border-y border-stone-200" >
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-xl font-serif font-bold mb-8">我们的团队机制：专家领衔 + 轻资产协作</h2>
                     <div className="grid md:grid-cols-3 gap-8 text-left">
@@ -326,10 +352,10 @@ const WenzhouHeritage = () => {
                     </div>
                     <p className="mt-8 text-stone-500 text-sm">已与高校与行业机构建立合作机制，保障研究深度与生产效率。</p>
                 </div>
-            </section>
+            </section >
 
             {/* FAQ */}
-            <section id="faq" className="py-20 px-6 max-w-3xl mx-auto">
+            < section id="faq" className="py-20 px-6 max-w-3xl mx-auto" >
                 <h2 className="text-2xl font-serif font-bold text-center mb-12">常见问题</h2>
                 <div className="space-y-4">
                     <FaqItem
@@ -357,10 +383,10 @@ const WenzhouHeritage = () => {
                         onClick={() => toggleFaq(3)}
                     />
                 </div>
-            </section>
+            </section >
 
             {/* CTA Footer */}
-            <section id="contact" className="py-24 px-6 bg-stone-900 text-stone-400 text-center">
+            < section id="contact" className="py-24 px-6 bg-stone-900 text-stone-400 text-center" >
                 <div className="max-w-2xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">现在就开始</h2>
                     <p className="text-lg mb-10 font-light">把“还来得及”的记忆，变成下一代可继承的资产。</p>
@@ -381,8 +407,8 @@ const WenzhouHeritage = () => {
                         &copy; {new Date().getFullYear()} 温州商脉口述史工程组. All Rights Reserved.
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 };
 

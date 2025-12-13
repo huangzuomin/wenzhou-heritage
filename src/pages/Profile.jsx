@@ -9,11 +9,14 @@ import {
     Briefcase,
     GraduationCap,
     ScrollText,
-    User
+    User,
+    Menu,
+    X
 } from 'lucide-react';
 
 const ProjectLeaderProfile = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // Handle scroll effect for navbar
     useEffect(() => {
@@ -45,10 +48,29 @@ const ProjectLeaderProfile = () => {
                         <button onClick={() => scrollToSection('methodology')} className="hover:text-stone-900 transition-colors">方法论</button>
                         <button onClick={() => scrollToSection('role')} className="hover:text-stone-900 transition-colors">项目角色</button>
                     </div>
-                    <button className="px-5 py-2 border border-stone-900 text-stone-900 text-sm hover:bg-stone-900 hover:text-stone-50 transition-colors rounded-sm">
+                    <button className="hidden md:block px-5 py-2 border border-stone-900 text-stone-900 text-sm hover:bg-stone-900 hover:text-stone-50 transition-colors rounded-sm">
                         联系咨询
                     </button>
+
+                    <button
+                        className="md:hidden text-stone-900"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
+
+                {mobileMenuOpen && (
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-stone-200 shadow-lg py-4 px-6 flex flex-col space-y-4">
+                        <button onClick={() => { scrollToSection('background'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">核心背景</button>
+                        <button onClick={() => { scrollToSection('works'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">代表成果</button>
+                        <button onClick={() => { scrollToSection('methodology'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">方法论</button>
+                        <button onClick={() => { scrollToSection('role'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">项目角色</button>
+                        <button className="text-left py-2 bg-stone-900 text-white text-center rounded-sm mt-2">
+                            联系咨询
+                        </button>
+                    </div>
+                )}
             </nav>
 
             {/* Hero Profile Section */}
