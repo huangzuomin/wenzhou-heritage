@@ -53,7 +53,7 @@ const WenzhouHeritage = () => {
                     </div>
                     <div className="hidden md:flex space-x-8 text-sm font-medium text-stone-600">
                         <button onClick={() => scrollToSection('whynow')} className="hover:text-stone-900 transition-colors">缘起</button>
-                        <Link to="/leader-profile" className="hover:text-stone-900 transition-colors">负责人</Link>
+                        <button onClick={() => scrollToSection('team')} className="hover:text-stone-900 transition-colors">专家团队</button>
                         <button onClick={() => scrollToSection('deliverables')} className="hover:text-stone-900 transition-colors">交付</button>
                         <button onClick={() => scrollToSection('case')} className="hover:text-stone-900 transition-colors">案例</button>
                         <button onClick={() => scrollToSection('cooperation')} className="hover:text-stone-900 transition-colors">合作</button>
@@ -79,7 +79,7 @@ const WenzhouHeritage = () => {
                 {mobileMenuOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-stone-200 shadow-lg py-4 px-6 flex flex-col space-y-4">
                         <button onClick={() => { scrollToSection('whynow'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">缘起</button>
-                        <Link to="/leader-profile" className="text-left py-2 border-b border-stone-100 text-stone-600" onClick={() => setMobileMenuOpen(false)}>负责人</Link>
+                        <button onClick={() => { scrollToSection('team'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">专家团队</button>
                         <button onClick={() => { scrollToSection('deliverables'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">交付</button>
                         <button onClick={() => { scrollToSection('case'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">案例</button>
                         <button onClick={() => { scrollToSection('cooperation'); setMobileMenuOpen(false); }} className="text-left py-2 border-b border-stone-100 text-stone-600">合作</button>
@@ -330,27 +330,47 @@ const WenzhouHeritage = () => {
             </section >
 
             {/* Team */}
-            < section className="py-16 px-6 bg-stone-100 border-y border-stone-200" >
+            < section id="team" className="py-24 px-6 bg-stone-100 border-y border-stone-200" >
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-xl font-serif font-bold mb-8">我们的团队机制：专家领衔 + 轻资产协作</h2>
+                    <h2 className="text-3xl font-serif font-bold mb-4">专家团队</h2>
+                    <p className="text-stone-500 mb-12">由资深媒体人与顶尖学者领衔的跨界协作机制</p>
+
                     <div className="grid md:grid-cols-3 gap-8 text-left">
-                        <div className="bg-white p-6 shadow-sm">
-                            <h4 className="font-bold text-stone-900 mb-2">学术总监/项目负责人</h4>
-                            <p className="text-sm text-stone-600 mb-2">负责方法体系、核心深访与终审</p>
-                            <Link to="/leader-profile" className="text-xs text-amber-700 font-medium hover:underline">
-                                查看详细介绍 &rarr;
+                        <div className="bg-white p-6 shadow-sm group">
+                            <div className="aspect-[4/5] bg-stone-200 mb-4 overflow-hidden">
+                                <img src="/郭乐天.jpg" alt="郭乐天" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            </div>
+                            <h4 className="font-bold text-stone-900 mb-1">学术总监 / 郭乐天</h4>
+                            <p className="text-xs text-amber-700 font-bold mb-3 uppercase tracking-wider">Project Leader</p>
+                            <p className="text-sm text-stone-600 mb-4 text-justify leading-relaxed">负责工程方法体系设计、核心访谈与学术终审。资深媒体人，温州商学院传媒学院首任院长。</p>
+                            <Link to="/leader-profile" className="text-xs text-stone-900 font-bold hover:text-amber-700 flex items-center gap-1 transition-colors">
+                                查看详细介绍 <ArrowRight size={12} />
                             </Link>
                         </div>
-                        <div className="bg-white p-6 shadow-sm">
-                            <h4 className="font-bold text-stone-900 mb-2">采编研究团队</h4>
-                            <p className="text-sm text-stone-600">资料搜集、整理、初稿撰写与事实核查</p>
+                        <div className="bg-white p-6 shadow-sm group">
+                            <div className="aspect-[4/5] bg-stone-200 mb-4 overflow-hidden">
+                                <img src="/李希光.jpeg" alt="李希光" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            </div>
+                            <h4 className="font-bold text-stone-900 mb-1">首席学术顾问 / 李希光</h4>
+                            <p className="text-xs text-amber-700 font-bold mb-3 uppercase tracking-wider">Academic Advisor</p>
+                            <p className="text-sm text-stone-600 mb-4 text-justify leading-relaxed">清华大学国际传播研究中心主任，联合国教科文组织媒介素养与文明对话教席负责人。</p>
+                            <Link to="/expert-li" className="text-xs text-stone-900 font-bold hover:text-amber-700 flex items-center gap-1 transition-colors">
+                                查看详细介绍 <ArrowRight size={12} />
+                            </Link>
                         </div>
-                        <div className="bg-white p-6 shadow-sm">
-                            <h4 className="font-bold text-stone-900 mb-2">法律/合规顾问</h4>
-                            <p className="text-sm text-stone-600">边界把控、授权与风险审查</p>
+                        <div className="bg-white p-6 shadow-sm group">
+                            <div className="aspect-[4/5] bg-stone-200 mb-4 overflow-hidden">
+                                <img src="/郭全中.jpg" alt="郭全中" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            </div>
+                            <h4 className="font-bold text-stone-900 mb-1">首席商业逻辑顾问 / 郭全中</h4>
+                            <p className="text-xs text-amber-700 font-bold mb-3 uppercase tracking-wider">Strategy Advisor</p>
+                            <p className="text-sm text-stone-600 mb-4 text-justify leading-relaxed">中央民族大学教授，传媒经济与管理专家，负责解构企业背后的生存逻辑与制度改革。</p>
+                            <Link to="/expert-guo" className="text-xs text-stone-900 font-bold hover:text-amber-700 flex items-center gap-1 transition-colors">
+                                查看详细介绍 <ArrowRight size={12} />
+                            </Link>
                         </div>
                     </div>
-                    <p className="mt-8 text-stone-500 text-sm">已与高校与行业机构建立合作机制，保障研究深度与生产效率。</p>
+                    <p className="mt-12 text-stone-500 text-sm italic">已与多所高校与行业智库建立深度合作机制，保障研究专业度。</p>
                 </div>
             </section >
 

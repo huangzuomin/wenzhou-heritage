@@ -78,11 +78,12 @@ const ProjectLeaderProfile = () => {
                 <div className="max-w-5xl mx-auto grid md:grid-cols-12 gap-12 items-center">
                     {/* Portrait Placeholder */}
                     <div className="md:col-span-4 flex justify-center md:justify-end">
-                        <div className="w-64 h-80 bg-stone-200 relative shadow-xl border-4 border-white">
-                            <div className="absolute inset-0 flex flex-col items-center justify-center text-stone-400">
-                                <User size={64} strokeWidth={1} />
-                                <span className="mt-4 text-sm font-serif tracking-widest">[ 照片占位 ]</span>
-                            </div>
+                        <div className="w-64 h-80 bg-stone-200 relative shadow-xl border-4 border-white overflow-hidden">
+                            <img
+                                src="/郭乐天.jpg"
+                                alt="郭乐天"
+                                className="w-full h-full object-cover"
+                            />
                             {/* Decorative Frame Element */}
                             <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-amber-700/30"></div>
                             <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-stone-900/10"></div>
